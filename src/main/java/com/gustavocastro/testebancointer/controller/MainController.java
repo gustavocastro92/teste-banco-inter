@@ -25,7 +25,7 @@ import com.gustavocastro.testebancointer.entity.Task;
 
 /*
  * Classe Controller do teste do Banco Inter
- * @author <a href="mailto:gustavogcastro1992@gmail.comr"> Gustavo Castro </a>
+ * @author <a href="mailto:gustavogcastro1992@gmail.com"> Gustavo Castro </a>
  * 
  * Referencial tecnico:
  * https://spring.io/guides/gs/rest-service/
@@ -61,7 +61,7 @@ public class MainController {
 		this.jobBO.create(job);
 	}
 	
-	@PostMapping(value = "/jobs/{id}")
+	@PostMapping(value = "/jobs")
 	public void postJob(@RequestBody Job job) throws Exception{		
 		this.jobBO.create(job);
 	}
@@ -79,8 +79,17 @@ public class MainController {
 	
 	@GetMapping(value = "/tasks")
 	public List<Task> getTask(@RequestParam(required = false) Date createdAt){
-		return this.taskBO.getTasks(createdAt);
-		
+		return this.taskBO.getTasks(createdAt);		
+	}
+	
+	@PostMapping(value = "/tasks")
+	public void postTasks(@RequestBody Task task) throws Exception{		
+		this.taskBO.create(task);
+	}
+	
+	@GetMapping(value = "/tasks/{id}")
+	public Task getTaskById(@PathVariable("id") Long id){
+		return this.taskBO.getTaskById(id);
 	}
 	
 	@InitBinder     

@@ -14,7 +14,7 @@ import com.gustavocastro.testebancointer.entity.Task;
 
 /*
  * Classe que define os jobs no teste do Banco Inter
- * @author <a href="mailto:gustavogcastro1992@gmail.comr"> Gustavo Castro </a>
+ * @author <a href="mailto:gustavogcastro1992@gmail.com"> Gustavo Castro </a>
  * 
  * Referencial tecnico:
  * https://stackoverflow.com/questions/21058570/how-to-save-nested-json-object-in-a-spring-mvc

@@ -7,7 +7,7 @@ import com.gustavocastro.testebancointer.entity.Job;
 
 /*
  * Classe DAO para o job do teste do Banco Inter
- * @author <a href="mailto:gustavogcastro1992@gmail.comr"> Gustavo Castro </a>
+ * @author <a href="mailto:gustavogcastro1992@gmail.com"> Gustavo Castro </a>
  * 
  */
 
