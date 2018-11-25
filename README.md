@@ -23,12 +23,7 @@ Executar o comando "mvnw spring-boot:run" (sem áspas) na raíz do diretório on
   "parentJob": {
     "id": 2,
     "name": "Second job",
-    "active": true,
-    "parentJob": {
-	    "id": 25,
-	    "name": "25 job",
-	    "active": true
-	  }
+    "active": true
   },
   "tasks": [
     {
