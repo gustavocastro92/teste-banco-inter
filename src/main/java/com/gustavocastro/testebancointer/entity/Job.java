@@ -93,6 +93,10 @@ public class Job{
 
 	public void setParentJob(Job parentJob) {
 		this.parentJob = parentJob;
-	}	
+	}
+	
+	public boolean haveTasks() {
+		return this.getTasks() != null && !this.getTasks().isEmpty();
+	}
 	
 }

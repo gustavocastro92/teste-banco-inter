@@ -1,17 +1,19 @@
 package com.gustavocastro.testebancointer.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -39,12 +41,14 @@ public class Task{
 	
 	@ManyToOne(optional = true
 			, fetch = FetchType.LAZY
-			, cascade = CascadeType.REMOVE)
+			, cascade = CascadeType.MERGE)
     @JoinColumn(name="id_job", nullable=true)
 	@JsonIgnore
 	private Job job;
 	
 	@Column
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
 	private Date createdAt;
 	
 	public Task() {}

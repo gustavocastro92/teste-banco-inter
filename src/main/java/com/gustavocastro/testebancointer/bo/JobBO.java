@@ -71,7 +71,7 @@ public class JobBO {
 	 */
 
 	private void createTasksIfNotNull(Job job) {
-		if(!job.getTasks().isEmpty()) {
+		if(job.haveTasks()) {
 			linkJob(job);
 			createTasks(job);
 		}
@@ -157,6 +157,21 @@ public class JobBO {
 														: t1.getWeight() < t2.getWeight() ? -1 : 0);
 		}
 	}
-
 	
+	public void deleteJob(Long id) {
+		Job job = this.jobDAO.findById(id).get();
+		deleteTasksIfNotNull(job);
+		this.jobDAO.deleteById(id);
+	}
+
+	private void deleteTasksIfNotNull(Job job) {
+		if(job.haveTasks()) {
+			deleteTasks(job);
+		}
+	}
+
+	private void deleteTasks(Job job) {
+		this.taskBO.deleteTask(job.getTasks());
+	}
+
 }

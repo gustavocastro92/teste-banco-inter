@@ -1,17 +1,21 @@
 package com.gustavocastro.testebancointer.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gustavocastro.testebancointer.bo.JobBO;
@@ -52,14 +56,36 @@ public class MainController {
 	}
 	
 	@PutMapping(value = "/jobs/{id}")
-	public void createJob(@PathVariable("id") Long id,
+	public void putJob(@PathVariable("id") Long id,
 			@RequestBody Job job) throws Exception{		
 		this.jobBO.create(job);
+	}
+	
+	@PostMapping(value = "/jobs/{id}")
+	public void postJob(@RequestBody Job job) throws Exception{		
+		this.jobBO.create(job);
+	}
+	
+	@DeleteMapping(value = "/jobs/{id}")
+	public void deleteJob(@PathVariable("id") Long id) {
+		this.jobBO.deleteJob(id);
 	}
 	
 	@PutMapping(value = "/tasks/{id}")
 	public void createJob(@PathVariable("id") Long id,
 			@RequestBody Task task) {
 		this.taskBO.create(task);
+	}
+	
+	@GetMapping(value = "/tasks")
+	public List<Task> getTask(@RequestParam(required = false) Date createdAt){
+		return this.taskBO.getTasks(createdAt);
+		
+	}
+	
+	@InitBinder     
+	public void initBinder(WebDataBinder binder){
+	     binder.registerCustomEditor(Date.class,     
+	                         new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true, 10));   
 	}
 }
