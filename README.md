@@ -22,7 +22,7 @@ Executar o comando "mvnw spring-boot:run" (sem áspas) na raíz do diretório on
 
 ### 1. PUT para Jobs
 
-	PUT:  http://localhost:8080/jobs/{id} ex.:  http://localhost:8080/jobs/1
+	PUT:  /jobs/{id} ex.:  /jobs/1
     Descrição: Insere na memória os jobs informados no JSON
 	Corpo da requisição: JSON com os jobs conforme exemplo abaixo
 
@@ -56,12 +56,12 @@ Executar o comando "mvnw spring-boot:run" (sem áspas) na raíz do diretório on
 ```
 
 
-### 2. GET:  http://localhost:8080/jobs
+### 2. GET:  /jobs
     Parâmetro: sortByWeight (opcional)
-    Exemplo:  http://localhost:8080/jobs/sortByWeight=true
+    Exemplo:  /jobs/sortByWeight=true
 	Descrição: Retorna todos os jobs, podendo ser ordenado de acordo com o parâmetro 'sortByWeight'
     
-### 3. POST: http://localhost:8080/jobs
+### 3. POST: /jobs
     Descrição: Insere na memória os jobs informados no JSON
 	Corpo da requisição: JSON com os jobs conforme exemplo abaixo
 
@@ -93,20 +93,20 @@ Executar o comando "mvnw spring-boot:run" (sem áspas) na raíz do diretório on
 		  ]
 		}
 ```
-### 4. GET:  http://localhost:8080/jobs/{id}
+### 4. GET:  /jobs/{id}
     Parâmetro: sortByWeight (opcional)
-    Exemplo:  http://localhost:8080/jobs/1
+    Exemplo:  /jobs/1
     Descrição: Retorna o job com o id informado na URL
     
-### 5. DELETE:  http://localhost:8080/jobs/{id}
-    Exemplo:  http://localhost:8080/jobs/1
+### 5. DELETE:  /jobs/{id}
+    Exemplo:  /jobs/1
     Descrição: Deleta o job com o id informado na URL
 
 ## Tasks
-### 1. GET:  http://localhost:8080/tasks
+### 1. GET:  /tasks
     Parâmetro: createdAt (opcional)(formato: "yyyy-MM-dd")
     Descrição: Retorna todas as tasks, podendo ser filtrada por data
-### 2. POST: http://localhost:8080/tasks
+### 2. POST: /tasks
     Descrição: Insere uma task a partir de um JSON
     Corpo da requisição: JSON no formato de tasks
 ```json
@@ -118,11 +118,11 @@ Executar o comando "mvnw spring-boot:run" (sem áspas) na raíz do diretório on
       "createdAt": "2017-05-23"
     }
 ```
-### 3. GET: http://localhost:8080/tasks/{id}
-    Exemplo: http://localhost:8080/tasks/1
+### 3. GET: /tasks/{id}
+    Exemplo: /tasks/1
     Descrição: Retorna um JSON referente à task com o id informado na URL
 
-### 4. PUT: http://localhost:8080/tasks/{id}
+### 4. PUT: /tasks/{id}
     Descrição: Insere uma task a partir de um JSON
     Corpo da requisição: JSON no formato de tasks
 ```json
@@ -135,8 +135,8 @@ Executar o comando "mvnw spring-boot:run" (sem áspas) na raíz do diretório on
     }
 ```
 
-### 5. DELETE: http://localhost:8080/tasks/{id}
-    Exemplo: http://localhost:8080/tasks/1
+### 5. DELETE: /tasks/{id}
+    Exemplo: /tasks/1
     Descrição: Deleta a task referente ao ID da URL
     
 ## Testes
